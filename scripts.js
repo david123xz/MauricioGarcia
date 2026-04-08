@@ -73,10 +73,11 @@ bars.forEach(bar => observer.observe(bar));
 // =======================
 // CANVAS GALAXY BACKGROUND
 // =======================
-// ======= CANVAS CINEMATIC ULTRA PREMIUM =======
+// ======= CANVAS CINEMATIC ULTRA PREMIUM AAA =======
 const canvas = document.getElementById("galaxia");
 const ctx = canvas.getContext("2d");
 
+// ======= RESIZE =======
 function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = document.body.scrollHeight;
@@ -91,38 +92,46 @@ window.addEventListener("mouseout", () => { mouse.x = null; mouse.y = null; });
 
 // ======= CONFIGURATION =======
 const CONFIG = {
-    STAR_COUNT: 250,
-    STAR_LAYERS: [0.4, 0.8, 1.5], // Lejanas, medias, cercanas
+    STAR_LAYERS: [
+        { count: 80, speed: 0.2, radius: [0.3,0.6] }, // lejanas
+        { count: 80, speed: 0.5, radius: [0.5,0.9] }, // medias
+        { count: 80, speed: 0.9, radius: [0.8,1.5] }  // cercanas
+    ],
     SHOOTING_STAR_COUNT: 12,
-    NEBULA_COUNT: 7,
-    TRAIL_LENGTH: 30,
-    BACKGROUND_COLOR: "rgba(5,10,25,0.2)"
+    NEBULA_COUNT: 6,
+    TRAIL_LENGTH: 35,
+    BACKGROUND_COLOR: "rgba(5,10,25,0.18)"
 };
 
 // ======= STAR CLASS =======
 class Star {
-    constructor(layer) { this.layer = layer; this.init(); }
+    constructor(layerConfig){
+        this.speedFactor = layerConfig.speed;
+        this.radiusRange = layerConfig.radius;
+        this.init();
+    }
     init() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
-        this.radius = (0.4 + Math.random()*0.6) * this.layer;
+        this.x = Math.random()*canvas.width;
+        this.y = Math.random()*canvas.height;
+        this.radius = this.radiusRange[0] + Math.random()*(this.radiusRange[1]-this.radiusRange[0]);
         this.color = `hsla(220,30%,${70 + Math.random()*10}%,0.9)`;
-        this.speedX = (Math.random()-0.5) * 0.02 * this.layer;
-        this.speedY = (Math.random()-0.5) * 0.02 * this.layer;
+        this.speedX = (Math.random()-0.5)*0.02*this.speedFactor;
+        this.speedY = (Math.random()-0.5)*0.02*this.speedFactor;
         this.trail = [];
     }
-    update() {
-        // Mouse attraction
+    update(){
+        // Suave interacción con mouse
         if(mouse.x && mouse.y){
             const dx = mouse.x - this.x;
             const dy = mouse.y - this.y;
             const dist = Math.hypot(dx, dy);
-            if(dist < 300){
-                const force = (300 - dist)/300 * 0.008;
+            if(dist<300){
+                const force = (300-dist)/300 * 0.008*this.speedFactor;
                 this.x += dx*force;
                 this.y += dy*force;
             }
         }
+
         this.x += this.speedX;
         this.y += this.speedY;
 
@@ -136,7 +145,7 @@ class Star {
         this.trail.push({x:this.x, y:this.y});
         if(this.trail.length>CONFIG.TRAIL_LENGTH) this.trail.shift();
     }
-    draw() {
+    draw(){
         ctx.beginPath();
         for(let i=0;i<this.trail.length;i++){
             const p = this.trail[i];
@@ -171,14 +180,14 @@ class ShootingStar {
     }
     draw(){
         if(!this.active) return;
-        const grad = ctx.createLinearGradient(this.x, this.y, this.x - this.length, this.y - this.length*Math.tan(this.angle));
+        const grad = ctx.createLinearGradient(this.x,this.y,this.x-this.length,this.y-this.length*Math.tan(this.angle));
         grad.addColorStop(0,"rgba(255,255,255,0.95)");
         grad.addColorStop(1,"rgba(255,255,255,0)");
-        ctx.strokeStyle = grad;
-        ctx.lineWidth = 2.8;
+        ctx.strokeStyle=grad;
+        ctx.lineWidth=3;
         ctx.beginPath();
         ctx.moveTo(this.x,this.y);
-        ctx.lineTo(this.x - this.length, this.y - this.length*Math.tan(this.angle));
+        ctx.lineTo(this.x-this.length,this.y-this.length*Math.tan(this.angle));
         ctx.stroke();
     }
 }
@@ -202,10 +211,10 @@ class Nebula {
         if(this.y>canvas.height)this.y=0;
     }
     draw(){
-        const gradient = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.radius);
-        gradient.addColorStop(0,this.color);
-        gradient.addColorStop(1,"rgba(0,0,0,0)");
-        ctx.fillStyle = gradient;
+        const grad = ctx.createRadialGradient(this.x,this.y,0,this.x,this.y,this.radius);
+        grad.addColorStop(0,this.color);
+        grad.addColorStop(1,"rgba(0,0,0,0)");
+        ctx.fillStyle=grad;
         ctx.beginPath();
         ctx.arc(this.x,this.y,this.radius,0,Math.PI*2);
         ctx.fill();
@@ -217,9 +226,7 @@ const stars=[], shootingStars=[], nebulas=[];
 function init(){
     stars.length=0; shootingStars.length=0; nebulas.length=0;
     CONFIG.STAR_LAYERS.forEach(layer=>{
-        for(let i=0;i<CONFIG.STAR_COUNT/CONFIG.STAR_LAYERS.length;i++){
-            stars.push(new Star(layer));
-        }
+        for(let i=0;i<layer.count;i++) stars.push(new Star(layer));
     });
     for(let i=0;i<CONFIG.SHOOTING_STAR_COUNT;i++) shootingStars.push(new ShootingStar());
     for(let i=0;i<CONFIG.NEBULA_COUNT;i++) nebulas.push(new Nebula());
@@ -228,7 +235,7 @@ init();
 
 // ======= ANIMATION LOOP =======
 function animate(){
-    ctx.fillStyle=CONFIG.BACKGROUND_COLOR;
+    ctx.fillStyle = CONFIG.BACKGROUND_COLOR;
     ctx.fillRect(0,0,canvas.width,canvas.height);
 
     nebulas.forEach(n=>{n.update();n.draw();});
