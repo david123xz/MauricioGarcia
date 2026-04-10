@@ -54,7 +54,39 @@ function handleScrollReveal() {
 window.addEventListener('scroll', handleScrollReveal);
 
 // =======================
-// TECNOLOGÍAS AVANZADAS
+// HABILIDADES
+// =======================
+const skillBars = document.querySelectorAll('.skill-progress');
+
+const skillObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      const bar = entry.target;
+
+      // Usa el valor de data-value si existe, sino 80%
+      const value = bar.getAttribute('data-value') || '80';
+      bar.style.width = value + '%';
+
+      // Animación suave de la tarjeta al aparecer
+      const skillCard = bar.closest('.skill');
+      skillCard.style.opacity = 1;
+      skillCard.style.transform = 'scale(1) rotateX(0) rotateY(0)';
+
+      skillObserver.unobserve(bar);
+    }
+  });
+}, { threshold: 0.3 });
+
+// Inicializa cada tarjeta invisible y desplazada
+skillBars.forEach(bar => {
+  const skillCard = bar.closest('.skill');
+  skillCard.style.opacity = 0;
+  skillCard.style.transform = 'scale(0.95) translateY(40px)';
+  skillObserver.observe(bar);
+});
+
+// =======================
+// TECNOLOGÍAS
 // =======================
 const bars = document.querySelectorAll('.bar');
 

@@ -1,13 +1,12 @@
 CREATE TABLE IF NOT EXISTS usuarios (
-    id INT AUTO_INCREMENT PRIMARY KEY,
+    id CHAR(36) PRIMARY KEY,
     nombre VARCHAR(100) NOT NULL,
     email VARCHAR(100) NOT NULL UNIQUE,
-    contraseña VARCHAR(255) NOT NULL,
+    password VARCHAR(255) NOT NULL,
     fecha_registro TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 CREATE TABLE IF NOT EXISTS administradores (
-    id_admin INT AUTO_INCREMENT PRIMARY KEY,
-    id_usuario INT NOT NULL,
+    id_usuario CHAR(36) PRIMARY KEY,
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id) ON DELETE CASCADE
 );

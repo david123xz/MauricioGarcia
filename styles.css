@@ -105,11 +105,15 @@ body {
   top: 0;
   z-index: 9999;
   transition: top var(--transition), padding var(--transition), box-shadow var(--transition);
+
+  width: fit-content;
+  margin: 0 auto;
+  padding: 0;
 }
 
 .header.scrolled {
   top: 10px;
-  padding: 12px 36px;
+  padding: 0;
   border-radius: calc(var(--radius)/1.2);
   box-shadow: 0 25px 70px rgba(0,0,0,0.6), inset 0 2px 4px rgba(255,255,255,0.08);
 }
@@ -135,6 +139,7 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 16px 42px;
+  gap: 60px;
   border-radius: var(--radius);
   background: linear-gradient(135deg, rgba(79,140,255,0.08), rgba(79,140,255,0.02));
   backdrop-filter: var(--glass-blur) saturate(180%) brightness(1.15);
@@ -167,14 +172,14 @@ body {
   width: 0%;
   height: 2px;
   border-radius: 2px;
-  background: var(--primary-glow);
+  box-shadow: 0 0 8px #FF6F00, 0 0 16px #FF6F00;
   transition: width var(--transition);
 }
 
 .navbar a:hover,
 .navbar a:focus-visible {
-  color: var(--text-light);
-  text-shadow: 0 0 15px var(--primary-glow), 0 0 25px var(--primary-glow);
+  color: #FF6F00;
+  text-shadow: 0 0 15px #FF6F00, 0 0 25px #FF6F00;
   transform: translateY(-2px) scale(1.05);
 }
 
@@ -260,6 +265,7 @@ body {
   border: 1px solid var(--border);
   backdrop-filter: var(--glass-blur) saturate(180%) brightness(1.1);
   box-shadow: 0 10px 30px rgba(0,0,0,0.35), inset 0 1px 2px rgba(255,255,255,0.05);
+  text-decoration: none;
 }
 
 .btn::before {
@@ -348,30 +354,73 @@ body {
 /* ===========================
    SKILLS
 =========================== */
+/* ===========================
+   SKILLS GRID
+=========================== */
 .skills-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 24px;
   justify-content: center;
+  perspective: 1200px; /* necesario para hover 3D */
+  overflow: visible;    /* permite que las tarjetas escalen fuera */
 }
 
+/* ===========================
+   SKILL CARD
+=========================== */
 .skill {
-  flex: 1 1 300px;
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-  color: var(--text);
-  box-shadow: var(--shadow);
-  backdrop-filter: var(--glass-blur);
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+  display: block;          /* block para que scale funcione */
+  width: 300px;
+  max-width: 360px;
+  padding: 28px 20px 20px;
+  border-radius: 16px;
+  background: rgba(12,18,32,0.85);
+  border: 1px solid rgba(0,255,255,0.2);
+  color: #e0e0e0;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.6),
+              0 0 20px rgba(0,255,255,0.1) inset;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  transform-style: preserve-3d;    /* esencial para 3D */
+  transform-origin: center center; /* crecer desde el centro */
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  overflow: visible;
 }
 
+/* ===========================
+   HOVER EFFECT
+=========================== */
 .skill:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 25px 60px rgba(79,140,255,0.45), 0 0 25px var(--primary-glow);
+  transform: scale(1.15) rotateX(5deg) rotateY(5deg);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.7),
+              0 0 50px #4F8CFF,
+              inset 0 0 15px rgba(0,255,255,0.2);
 }
 
+/* Overlay radial dinámico */
+.skill::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, transparent 50%);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.skill:hover::before {
+  opacity: 1;
+}
+
+/* ===========================
+   HEADER DENTRO DE TARJETA
+=========================== */
 .skill-header {
   display: flex;
   justify-content: space-between;
@@ -382,71 +431,134 @@ body {
 .skill-header h3 {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--primary);
-  text-shadow: 0 0 8px var(--primary-glow);
+  color: #4F8CFF;
+  text-shadow: 0 0 4px rgba(0,255,255,0.2);
 }
 
-.skill-level { font-size: 0.9rem; color: var(--text-muted); }
-
-.skill p { font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
-
+/* ===========================
+   BARRA DE PROGRESO
+=========================== */
 .skill-bar {
   width: 100%;
-  height: 8px;
-  background: rgba(255,255,255,0.05);
+  height: 10px;
+  background: rgba(0,0,0,0.15);
   border-radius: 999px;
   overflow: hidden;
+  margin-bottom: 6px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+  position: relative;
 }
 
 .skill-progress {
   width: 0%;
   height: 100%;
-  background: linear-gradient(135deg, var(--primary), #1e40af);
   border-radius: 999px;
-  transition: width 1.2s cubic-bezier(.4,0,.2,1);
+  background: #4F8CFF;
+  box-shadow: 0 0 12px #4F8CFF,
+              0 0 25px #4F8CFF,
+              0 0 35px #4F8CFF inset;
+  position: relative;
+  z-index: 1;
+  transition: width 1.5s cubic-bezier(.4,0,.2,1);
+}
+
+/* Flow animado */
+.skill-progress.flow::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,0), rgba(255,255,255,0.3), rgba(0,0,0,0));
+  animation: moveFlow 2s linear infinite;
+  border-radius: 999px;
+}
+
+@keyframes moveFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ===========================
+   HEADER DENTRO DE TARJETA
+=========================== */
+.skill-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.skill-header h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #4F8CFF;                 /* color azul uniforme */
+  text-shadow: 0 0 4px rgba(0,255,255,0.2);
+}
+
+/* ===========================
+   BARRA DE PROGRESO
+=========================== */
+.skill-bar {
+  width: 100%;
+  height: 10px;
+  background: rgba(0,0,0,0.15);
+  border-radius: 999px;
+  overflow: hidden;
+  margin-bottom: 6px;
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
+  position: relative;
+}
+
+.skill-progress {
+  width: 0%;
+  height: 100%;
+  border-radius: 999px;
+  background: #4F8CFF;                /* glow azul */
+  box-shadow: 0 0 12px #4F8CFF,
+              0 0 25px #4F8CFF,
+              0 0 35px #4F8CFF inset;
+  position: relative;
+  z-index: 1;
+  transition: width 1.5s cubic-bezier(.4,0,.2,1);
+}
+
+/* Flow animado */
+.skill-progress.flow::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, rgba(0,0,0,0), rgba(255,255,255,0.3), rgba(0,0,0,0));
+  animation: moveFlow 2s linear infinite;
+  border-radius: 999px;
+}
+
+@keyframes moveFlow {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 /* ===========================
    TIMELINE
 =========================== */
-.timeline {
-  position: relative;
-  margin: 60px 0;
-  padding-left: 40px;
-}
-
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 40px;
-  top: 0;
-  width: 4px;
-  height: 100%;
-  background: linear-gradient(to bottom, rgba(79,140,255,0.2), rgba(79,140,255,0.05));
-  border-radius: 2px;
-  backdrop-filter: blur(6px);
-}
-
+/* Timeline item */
 .timeline-item {
   position: relative;
   margin-bottom: 80px;
   padding-left: 60px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
   opacity: 0;
   transform: translateY(30px);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
+/* Scroll reveal */
 .timeline-item.scroll-reveal {
   opacity: 1;
   transform: translateY(0);
   transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
-.timeline-item:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 20px 50px rgba(79,140,255,0.15);
-}
-
+/* Timeline dot stays normal, no hover en todo el item */
 .timeline-dot {
   position: absolute;
   left: 30px;
@@ -460,11 +572,7 @@ body {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.timeline-item:hover .timeline-dot {
-  transform: scale(1.3);
-  box-shadow: 0 0 25px var(--primary-glow);
-}
-
+/* Opcional: dot pulse animado sigue igual */
 .timeline-dot::after {
   content: '';
   position: absolute;
@@ -478,13 +586,9 @@ body {
   animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
-  50% { transform: translate(-50%, -50%) scale(1.4); opacity: 0.2; }
-}
-
+/* Timeline content hover */
 .timeline-content {
-  background: rgba(255, 255, 255, 0.03); /* más transparente */
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 16px;
   padding: 24px 28px;
@@ -499,6 +603,7 @@ body {
   box-shadow: 0 15px 50px rgba(79,140,255,0.15);
 }
 
+/* Text inside timeline content */
 .timeline-content h3 {
   font-size: 1.45rem;
   margin-bottom: 6px;
@@ -509,13 +614,14 @@ body {
 
 .timeline-content span {
   font-size: 0.9rem;
-  color: rgba(255,255,255,0.5); /* más suave */
+  color: rgba(255,255,255,0.5);
   display: block;
   margin-bottom: 12px;
   font-style: italic;
 }
 
-.timeline-content p {
+.timeline-content p,
+.timeline-content ul {
   color: rgba(255,255,255,0.85);
   font-size: 1rem;
   line-height: 1.6;
