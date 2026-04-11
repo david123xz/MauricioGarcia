@@ -1,16 +1,16 @@
 :root {
-    --bg-deep: #05080f;
-    --bg-surface: #0c1324;
-    --primary: #22c55e;
-    --primary-muted: rgba(34, 197, 94, 0.2);
-    --text-main: #e2e8f0;
-    --text-dim: #ffffff;
-    --text-terminal: #94a3b8;
-    --border: #1e293b;
+  --bg-deep: #05080f;
+  --bg-surface: #0c1324;
+  --primary: #22c55e;
+  --primary-muted: rgba(34, 197, 94, 0.2);
+  --text-main: #e2e8f0;
+  --text-dim: #ffffff;
+  --text-terminal: #94a3b8;
+  --border: #1e293b;
 
-    --font-main: "Space Grotesk", sans-serif;
-    --font-mono: "JetBrains Mono", monospace;
-  }
+  --font-main: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
 
 * {
   margin: 0;
@@ -201,23 +201,6 @@ header {
 .card p {
   color: var(--text-dim);
   font-size: 0.9rem;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle at var(--x, 50%) var(--y, 50%),
-    rgba(34,197,94,0.15),
-    transparent 40%
-  );
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.card:hover::before {
-opacity: 1;
 }
 
 /* ===== SKILL BARS ===== */
