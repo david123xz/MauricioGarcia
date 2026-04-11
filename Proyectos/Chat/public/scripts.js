@@ -26,6 +26,7 @@ formulario.addEventListener('submit', function(event) {
             return;
         } else {
             console.log('Usuario creado:', data);
+            formulario.reset();
         }
     })
     .catch(error => {

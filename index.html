@@ -3,277 +3,199 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portafolio profesional de Mauricio Garcia, desarrollador web.">
-  <meta property="og:title" content="Mauricio Garcia | Desarrollador Web">
-  <meta property="og:description" content="Portafolio profesional de desarrollador web.">
-  <meta property="og:image" content="https://via.placeholder.com/1200x630">
-  <meta property="og:type" content="website">
 
-  <title>Mauricio Garcia | Desarrollador Web</title>
-  <link rel="icon" href="favicon.ico">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>SEC_OPERATOR | Mauricio Garcia</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-<canvas id="galaxia"></canvas>
-<!-- HEADER -->
-<header class="header">
-  <div class="container navbar-container">
-    <!-- Logo -->
-    <h1 class="logo">Mauricio Garcia</h1>
 
-    <!-- Navegación -->
-    <nav class="navbar" aria-label="Navegación principal">
-      <a href="#about">Sobre mí</a>
-      <a href="#skills">Habilidades</a>
-      <a href="#technologies">Tecnologías</a>
-      <a href="#projects">Proyectos</a>
-      <a href="#experience">Experiencia</a>
+<body>
+
+<header>
+  <div class="container navbar-container">
+    <div class="logo">SEC_OPERATOR</div>
+
+    <nav class="navbar">
+      <a href="#about">// ABOUT</a>
+      <a href="#skills">// SKILLS</a>
+      <a href="#technologies">// STACK</a>
+      <a href="#projects">// DEPLOYMENTS</a>
+      <a href="#experience">// LOGS</a>
     </nav>
+  </div>
+
+  <div class="container sys-bar">
+    <span>SYS_STATUS: ONLINE</span>
+    <span>NODE: MADRID</span>
+    <span>AUTH: LEVEL_04</span>
   </div>
 </header>
 
-<main>
-  <!-- HERO -->
-  <section id="about" class="hero section" aria-labelledby="hero-title">
-    <div class="container hero-container">
-      <div class="hero-content">
-        <h2 id="hero-title" class="scroll-reveal">Hola, soy <span class="highlight">Mauricio</span></h2>
-        <p class="scroll-reveal">Desarrollador Web especializado en crear experiencias rápidas, modernas y funcionales.</p>
-        <div class="hero-buttons scroll-reveal">
-          <a href="#projects" class="btn">Ver proyectos</a>
-          <a href="#contact" class="btn btn-outline">Contactar</a>
+<main class="container">
+
+  <section class="hero" id="about">
+    <h2>
+      SEC_OPERATOR:
+      <span class="highlight">MAURICIO_GARCIA</span>
+    </h2>
+
+    <div class="terminal-text">
+      // MISSION_PROFILE<br><br>
+      Desarrollador web enfocado en sistemas modernos, performance extremo,
+      arquitectura escalable y experiencias digitales de alto impacto.
+    </div>
+
+    <a class="btn" href="#projects">INIT_PROJECTS</a>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="section-title">// SKILL_MATRIX</div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>PENTESTING</h3>
+        <p>Auditoría de sistemas y análisis de vulnerabilidades.</p>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width:90%"></div>
         </div>
       </div>
-      <div class="hero-avatar scroll-reveal">
-        <img src="https://via.placeholder.com/180" alt="Foto de Mauricio Garcia, desarrollador web" loading="lazy">
+
+      <div class="card">
+        <h3>BACKEND</h3>
+        <p>APIs, bases de datos y arquitectura escalable.</p>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width:85%"></div>
+        </div>
       </div>
+
+      <div class="card">
+        <h3>PERFORMANCE</h3>
+        <p>Optimización y sistemas de alta velocidad.</p>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width:88%"></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- HABILIDADES -->
-  <section id="skills" class="section" aria-labelledby="skills-title">
-    <div class="container">
-      <h2 id="skills-title" class="section-title scroll-reveal">Habilidades</h2>
-      <div class="skills-grid">
-        <div class="skill scroll-reveal">
-          <div class="skill-header">
-            <h3>Frontend</h3>
-            <span class="skill-level">Avanzado</span>
-          </div>
-          <p>Diseño UI/UX, responsive design, accesibilidad</p>
-          <div class="skill-bar"><div class="skill-progress" style="width: 90%;"></div></div>
-        </div>
-        <div class="skill scroll-reveal">
-          <div class="skill-header">
-            <h3>Backend</h3>
-            <span class="skill-level">Intermedio</span>
-          </div>
-          <p>APIs REST, bases de datos, autenticación</p>
-          <div class="skill-bar"><div class="skill-progress" style="width: 80%;"></div></div>
-        </div>
-        <div class="skill scroll-reveal">
-          <div class="skill-header">
-            <h3>Performance</h3>
-            <span class="skill-level">Avanzado</span>
-          </div>
-          <p>Optimización web, carga rápida, SEO técnico</p>
-          <div class="skill-bar"><div class="skill-progress" style="width: 85%;"></div></div>
+  <section class="section" id="technologies">
+    <div class="section-title">// STACK</div>
+
+    <div class="grid">
+
+      <div class="card">
+        <h3>HTML</h3>
+        <p>Estructura semántica de interfaces web.</p>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width:95%"></div>
         </div>
       </div>
+
+      <div class="card">
+        <h3>CSS</h3>
+        <p>Diseño visual, layouts avanzados y animaciones UI.</p>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width:92%"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>JavaScript</h3>
+        <p>Interactividad, lógica frontend y DOM dinámico.</p>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width:90%"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>JAVA</h3>
+        <p>Backend robusto, POO y desarrollo de APIs.</p>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width:80%"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3>MySQL</h3>
+        <p>Gestión de bases de datos relacionales y optimización de queries.</p>
+        <div class="skill-bar-bg">
+          <div class="skill-bar-fill" style="width:85%"></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- TECNOLOGÍAS -->
-  <section id="technologies" class="section">
-    <div class="container">
-      <h2 class="section-title">Tecnologías</h2>
+  <section class="section" id="projects">
+    <div class="section-title">// DEPLOYMENTS</div>
 
-      <div class="tech-grid">
+    <div class="grid">
 
-        <div class="tech-card html" data-level="95%">
-          <div class="tech-header">
-            <span>HTML</span>
-          </div>
-          <div class="progress"><div class="bar"></div></div>
-          <small>Frontend</small>
-        </div>
-
-        <div class="tech-card css" data-level="90%">
-          <div class="tech-header">
-            <span>CSS</span>
-          </div>
-          <div class="progress"><div class="bar"></div></div>
-          <small>Frontend</small>
-        </div>
-
-        <div class="tech-card js" data-level="85%">
-          <div class="tech-header">
-            <span>JavaScript</span>
-          </div>
-          <div class="progress"><div class="bar"></div></div>
-          <small>Frontend</small>
-        </div>
-
-        <div class="tech-card java" data-level="75%">
-          <div class="tech-header">
-            <span>Java</span>
-          </div>
-          <div class="progress"><div class="bar"></div></div>
-          <small>Backend</small>
-        </div>
-
-        <div class="tech-card mysql" data-level="80%">
-          <div class="tech-header">
-            <span>MySQL</span>
-          </div>
-          <div class="progress"><div class="bar"></div></div>
-          <small>Database</small>
-        </div>
-
+      <div class="card" id="CHAT_SYSTEM">
+        <h3>CHAT_SYSTEM</h3>
+        <p>Plataforma de comunicación en tiempo real.</p>
       </div>
+
+      <div class="card">
+        <h3>E_COMMERCE_NODE</h3>
+        <p>Tienda online con pagos integrados.</p>
+      </div>
+
+      <div class="card">
+        <h3>DASHBOARD_AI</h3>
+        <p>Panel de análisis con visualización de datos.</p>
+      </div>
+
     </div>
   </section>
 
-  <!-- PROYECTOS -->
-  <section id="projects" class="section" aria-labelledby="projects-title">
-    <div class="container">
-      <h2 id="projects-title" class="section-title scroll-reveal">Proyectos</h2>
-      <div class="projects-grid">
-        <article class="project-card scroll-reveal">
-          <a href="Proyectos/Chat/index.html"><img src="https://via.placeholder.com/400x250" alt="Proyecto ChatGarcia" loading="lazy"></a>
-          <div class="project-content">
-            <a href="Proyectos/Chat/index.html"><h3>Chat</h3></a>
-            <p>Pagina para chatear con personas</p>
-          </div>
-        </article>
+  <section class="section" id="experience">
+    <div class="section-title">// ACCESS_LOGS</div>
 
-        <article class="project-card scroll-reveal">
-          <img src="https://via.placeholder.com/400x250" alt="Proyecto E-commerce" loading="lazy">
-          <div class="project-content">
-            <h3>E-commerce</h3>
-            <p>Tienda online con carrito de compras y pagos.</p>
-            <div class="project-links">
-            </div>
-          </div>
-        </article>
+    <div class="grid">
 
-        <article class="project-card scroll-reveal">
-          <img src="https://via.placeholder.com/400x250" alt="Proyecto Dashboard" loading="lazy">
-          <div class="project-content">
-            <h3>Dashboard</h3>
-            <p>Panel de administración con gráficos dinámicos.</p>
-            <div class="project-links">
-            </div>
-          </div>
-        </article>
+      <div class="card">
+        <h3>FREELANCE_NODE</h3>
+        <p>Desarrollo de aplicaciones web.</p>
       </div>
+
+      <div class="card">
+        <h3>3XA_SYSTEM</h3>
+        <p>Automatización de sistemas.</p>
+      </div>
+
     </div>
   </section>
 
-  <!-- EXPERIENCIA -->
-  <section id="experience" class="section" aria-labelledby="experience-title">
+  <section class="section" id="contact">
     <div class="container">
-      <h2 id="experience-title" class="section-title scroll-reveal">Experiencia Profesional</h2>
-      <div class="timeline">
 
-        <!-- Experiencia Freelance -->
-        <div class="timeline-item scroll-reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>Desarrollador Web - Freelance</h3>
-            <span class="timeline-period">2023 - Actualidad</span>
-            <p>Diseño y desarrollo de sitios web y aplicaciones personalizadas, optimizadas para rendimiento, accesibilidad y experiencia de usuario. Gestión completa de proyectos de manera independiente, incluyendo análisis de requerimientos y despliegue.</p>
-          </div>
-        </div>
+      <div class="section-title">// SECURE_CONTACT_CHANNEL</div>
 
-        <!-- Experiencia 3xA -->
-        <div class="timeline-item scroll-reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <h3>Desarrollador Web - 3xA</h3>
-            <span class="timeline-period">2026</span>
-            <p>Participación en proyectos de desarrollo web y soluciones digitales dentro de la empresa 3xA. Contribución en varias áreas y proyectos clave:</p>
-            <ul>
-              <li><strong>3xA-Projekt:</strong> Desarrollo frontend y backend de la plataforma interna, integración de APIs y optimización del flujo de trabajo.</li>
-              <li><strong>3xAI:</strong> Colaboración en proyectos de inteligencia artificial aplicada, prototipos de automatización y análisis de datos.</li>
-            </ul>
-          </div>
-        </div>
+      <form class="contact-form" id="contactForm">
 
-      </div>
+        <input type="text" name="name" placeholder="CODENAME" required>
+        <input type="email" name="email" placeholder="EMAIL_NODE" required>
+
+        <textarea name="message" rows="6" placeholder="MESSAGE_PAYLOAD" required></textarea>
+
+        <button type="submit" class="btn">TRANSMIT</button>
+
+      </form>
+
+      <p id="formStatus" class="form-status"></p>
+
     </div>
   </section>
 
 </main>
 
-<!-- FOOTER -->
-<footer class="footer-neon">
-  <div class="footer-inner">
-
-    <!-- TOP -->
-    <div class="footer-top">
-
-      <div class="footer-left">
-        <h3 class="footer-logo">Mauricio Garcia</h3>
-        <p class="footer-tagline">
-          Diseñando y desarrollando experiencias digitales con precisión y detalle.
-        </p>
-      </div>
-
-      <div class="footer-right">
-
-        <div class="footer-col">
-          <span>Navegación</span>
-          <a href="#about">Sobre mí</a>
-          <a href="#projects">Proyectos</a>
-          <a href="#skills">Habilidades</a>
-        </div>
-
-        <div class="footer-col">
-          <span>Contacto</span>
-          <a href="mailto:davidgh8548@gmail.com" class="icon-email">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
-              <path d="M3 5h18a1 1 0 0 1 1 1v1l-10 6L2 7V6a1 1 0 0 1 1-1zm19 4.2V18a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V9.2l9.4 5.64a1 1 0 0 0 1.2 0L22 9.2z"/>
-            </svg>
-            <span>Email</span>
-          </a>
-          <a href="https://www.linkedin.com/in/david-garcia-b47725253/" target="_blank" rel="noopener noreferrer" class="icon-linkedin">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
-              <path d="M4.98 3.5C4.98 4.88 3.88 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM0 8h5v16H0V8zm7.5 0h4.8v2.1h.1c.67-1.26 2.3-2.58 4.74-2.58 5.07 0 6 3.33 6 7.66V24h-5v-7.5c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.88 1.95-2.88 3.98V24h-5V8z"/>
-            </svg>
-            <span class="linkedin-text">LinkedIn</span>
-          </a>
-          <a href="https://github.com/david123xz" target="_blank" rel="noopener noreferrer" class="icon-github">
-            <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
-              <path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.3 9.4 7.9 10.9.6.1.8-.3.8-.6v-2.1c-3.2.7-3.9-1.5-3.9-1.5-.5-1.3-1.2-1.7-1.2-1.7-1-.7.1-.7.1-.7 1.1.1 1.6 1.2 1.6 1.2 1 .1 1.6-.7 1.9-1 .1-.7.4-1 .7-1.2-2.5-.3-5.1-1.3-5.1-5.8 0-1.3.5-2.3 1.2-3.2-.1-.3-.5-1.5.1-3.1 0 0 1-.3 3.3 1.2.9-.3 1.8-.4 2.7-.4.9 0 1.8.1 2.7.4 2.3-1.5 3.3-1.2 3.3-1.2.6 1.6.2 2.8.1 3.1.8.9 1.2 1.9 1.2 3.2 0 4.5-2.6 5.5-5.1 5.8.4.3.8 1 .8 2v2.9c0 .3.2.7.8.6C20.7 21.4 24 17.1 24 12c0-6.35-5.15-11.5-12-11.5z"/>
-            </svg>
-              <span class="github-text">GitHub</span>
-          </a>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- DIVIDER -->
-    <div class="footer-divider"></div>
-
-    <!-- BOTTOM -->
-    <div class="footer-bottom">
-      <p>© 2026 Mauricio Garcia</p>
-      <div class="footer-status">
-        <span class="dot"></span>
-        Disponible para nuevos proyectos
-      </div>
-    </div>
-
-  </div>
+<footer>
+  © 2026 SEC_OPERATOR // MAURICIO_GARCIA // SYSTEM ONLINE
 </footer>
 
-<!-- JS -->
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script src="scripts.js"></script>
 </body>
 </html>
