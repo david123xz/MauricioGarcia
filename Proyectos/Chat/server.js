@@ -1,9 +1,7 @@
-console.log("🔥 ARCHIVO SERVER.JS EJECUTÁNDOSE");
-
 // server.js
 const express = require('express'); // Importa Express
 const app = express();              // Crea la app
-const PORT = 3306;                  // Puerto donde correrá el servidor
+const PORT = 3000;                  // Puerto donde correrá el servidor
 const mysql = require('mysql2');    // Importa MySQL
 const { v4: uuidv4 } = require('uuid');
 
@@ -14,19 +12,19 @@ app.use(express.static('public'));
 // Configuración de la conexión a la base de datos
 const connection = mysql.createConnection({
   host: '127.0.0.1',
-  port: PORT,
+  port: 3306,
   user: 'davidAdmin',
   password: '123456',
   database: 'CHAT',
-  connectTimeout: 5000
 });
 
-connection.query('SELECT 1', (err) => {
+// Comprobar conexión a la base de datos
+connection.connect((err) => {
   if (err) {
-    console.error("❌ MySQL NO responde:", err.message);
-  } else {
-    console.log("✅ MySQL conectado correctamente");
+    console.error('Error al conectar a la base de datos:', err);
+    return;
   }
+  console.log('Conexión a la base de datos establecida');
 });
 
 // Recibir datos de JS
