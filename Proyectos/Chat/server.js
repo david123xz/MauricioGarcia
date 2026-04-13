@@ -8,10 +8,9 @@ const { v4: uuidv4 } = require('uuid');
 // Servir archivos estáticos (como HTML, CSS, JS)
 app.use(express.static('public'));
 
-
 // Configuración de la conexión a la base de datos
 const connection = mysql.createConnection({
-  host: '127.0.0.1',
+  host: 'localhost',
   port: 3306,
   user: 'davidAdmin',
   password: '123456',
@@ -58,6 +57,18 @@ app.post("/register", (req, res) => {
 });
 
 // Arrancar el servidor
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`Servidor escuchando en http://0.0.0.0:${PORT}`);
 });
+
+
+
+
+
+
+
+
+
+
+// lalala no pares esta fiesta va a arter
+// baila conmigo hasta el amanecer
