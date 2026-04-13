@@ -8,7 +8,7 @@ formulario.addEventListener('submit', function(event) {
     const password = document.getElementById('password').value;
 
     // Enviar datos al servidor
-    fetch('/register', {
+    fetch('/usuarios_registrados', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -27,6 +27,7 @@ formulario.addEventListener('submit', function(event) {
         } else {
             console.log('Usuario creado:', data);
             formulario.reset();
+            window.location.href = '/index.html';
         }
     })
     .catch(error => {
