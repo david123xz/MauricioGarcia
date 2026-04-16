@@ -1,5 +1,10 @@
 async function cargarUsuarios() {
-  const res = await fetch('/usuarios');
+  const token = localStorage.getItem('token');
+  const res = await fetch('/usuarios', {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
   const usuarios = await res.json();
 
   const lista = document.getElementById('listaUsuarios');
@@ -20,3 +25,20 @@ async function cargarUsuarios() {
 }
 
 cargarUsuarios();
+
+// ================= BOTONES =================
+// BOTON CERRAR SESION
+const btnCerrarSesion = document.getElementById('btnCerrarSesion');
+btnCerrarSesion.addEventListener('click', async () => {
+  const token = localStorage.getItem('token');
+  
+  await fetch('/logout', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  });
+
+  localStorage.removeItem('token');
+  window.location.href = '/html/login.html';
+});

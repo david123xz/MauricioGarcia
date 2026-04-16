@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Chat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet">
   <link rel="stylesheet" href="/css/paginaprincipal.css">
 </head>
 
@@ -10,21 +11,22 @@
 
   <div class="app">
 
-    <!-- 👥 SIDEBAR USUARIOS -->
     <aside class="sidebar">
       <h3>Usuarios</h3>
       <ul id="listaUsuarios"></ul>
+
+      <div class="areaUsuario">
+        <button id="btnConfiguracion">Configuracion</button>
+        <button id="btnCerrarSesion">Cerrar Sesión</button>
+      </div>
     </aside>
 
-    <!-- 💬 CHAT PRINCIPAL -->
     <main class="chat">
 
       <h3>Chat</h3>
 
-      <!-- mensajes -->
       <div class="mensajes"></div>
 
-      <!-- input -->
       <div class="input-area">
         <input type="text" placeholder="Escribe un mensaje..." />
         <button>Enviar</button>
@@ -33,7 +35,6 @@
     </main>
 
   </div>
-
   <script src="/js/paginaprincipal.js"></script>
 </body>
 </html>

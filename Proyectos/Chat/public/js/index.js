@@ -23,6 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
           return;
         } else {
           console.log('Inicio de sesión exitoso:', data);
+          localStorage.setItem('token', data.token);
           window.location.href = '/html/paginaprincipal.html';
         }
       })
