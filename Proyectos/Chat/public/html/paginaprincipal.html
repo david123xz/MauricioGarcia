@@ -23,13 +23,14 @@
 
     <main class="chat">
 
-      <h3>Chat</h3>
+      <h3 id="chatTitulo">Chat</h3>
 
-      <div class="mensajes"></div>
+      <div class="chat-vacio" id="chatVacio">CHAT</div>
+      <div class="mensajes" id="contenedorMensajes"></div>
 
       <div class="input-area">
-        <input type="text" placeholder="Escribe un mensaje..." />
-        <button>Enviar</button>
+        <input id="inputMensaje" type="text" placeholder="Escribe un mensaje..." />
+        <button id="btnEnviar">Enviar</button>
       </div>
 
     </main>

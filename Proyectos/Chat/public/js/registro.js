@@ -27,7 +27,7 @@ formulario.addEventListener('submit', function(event) {
         } else {
             console.log('Usuario creado:', data);
             formulario.reset();
-            window.location.href = '/index.html';
+            window.location.href = '/html/index.html';
         }
     })
     .catch(error => {
